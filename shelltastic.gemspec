@@ -5,15 +5,19 @@ require 'shelltastic/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "shelltastic"
-  gem.version       = Shelltastic::VERSION
+  gem.version       = ShellTastic::VERSION
   gem.authors       = ["Brad Smith"]
   gem.email         = ["bradleydsmith@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Shelltastic is another *nix shell wrapper.}
+  gem.summary       = %q{Call shell commands from Ruby.}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})
   gem.require_paths = ["lib"]
+  
+  gem.add_dependency('open4', '>= 1.3.0')
+  gem.add_development_dependency 'rake'
+  gem.add_development_dependency 'rspec'
 end

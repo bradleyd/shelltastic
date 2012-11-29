@@ -1,3 +1,3 @@
-module Shelltastic
+module ShellTastic
   VERSION = "0.0.1"
 end
