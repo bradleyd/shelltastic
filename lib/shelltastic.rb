@@ -7,16 +7,19 @@ module ShellTastic
   class Command
     attr_accessor :pid, :exitstatus, :verbose
     def initialize options={}
+      #yield self if block_given?
       @cmd ||= options[:cmd]
       @verbose ||= options[:verbose]
     end
     
     def run
+
       begin
       return_code = Open4::popen4(@cmd) do |pid, stdin, stdout, stderr|
         @output = stdout.read
         @pid = pid
         @error = stderr
+        stdin.close
       end
       rescue Errno::ENOENT => e
         raise ShellTastic::CommandException.new("Shell command #{@cmd} failed with status #{$?}")

@@ -32,5 +32,10 @@ describe ShellTastic do
     status.output.should eq(nil)
   end
 
+  #it "should take an array of commands and run them" do
+  #  status = ShellTastic::Command.new(cmd: ["echo 'foo'", "echo 'bar'"], verbose: true)
+  #  status.run
+  #  status.output.should eq("foo\n bar\n")
+  #end
 end
 
