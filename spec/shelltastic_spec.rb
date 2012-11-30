@@ -23,7 +23,7 @@ describe ShellTastic do
   it "should print commad output to stdout" do
     status = ShellTastic::Command.new(cmd: "echo 'foo'", verbose: true)
     status.run
-    status.output.should eq("foo\n")
+    status.output.should eq("foo")
   end
   
   it "should NOT print commad output to stdout" do
@@ -32,6 +32,12 @@ describe ShellTastic do
     status.output.should eq(nil)
   end
 
+  it "should fail when no command is given" do
+    status = ShellTastic::Command.new
+    expect {
+    status.run
+    }.to raise_error(ShellTastic::CommandException)
+  end
   #it "should take an array of commands and run them" do
   #  status = ShellTastic::Command.new(cmd: ["echo 'foo'", "echo 'bar'"], verbose: true)
   #  status.run

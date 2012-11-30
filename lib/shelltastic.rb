@@ -1,5 +1,7 @@
 require "shelltastic/version"
 require "shelltastic/exceptions"
+require "shelltastic/timer"
+require "shelltastic/io"
 require 'open4'
 
 module ShellTastic
@@ -7,24 +9,15 @@ module ShellTastic
   class Command
     attr_accessor :pid, :exitstatus, :verbose
     def initialize options={}
-      #yield self if block_given?
-      @cmd ||= options[:cmd]
-      @verbose ||= options[:verbose]
+      @cmd ||= options.fetch(:cmd, nil)
+      @verbose ||= options.fetch(:verbose, true)
     end
     
     def run
-
-      begin
-      return_code = Open4::popen4(@cmd) do |pid, stdin, stdout, stderr|
-        @output = stdout.read
-        @pid = pid
-        @error = stderr
-        stdin.close
+      raise ShellTastic::CommandException.new("No command was given!") if @cmd.nil?
+      ShellTastic::IO.popen(@cmd).each do |k,v|
+        instance_variable_set("@#{k}", v) unless v.nil?
       end
-      rescue Errno::ENOENT => e
-        raise ShellTastic::CommandException.new("Shell command #{@cmd} failed with status #{$?}")
-      end
-      @exitstatus = return_code.exitstatus
     end
 
     def output=(command_output)
