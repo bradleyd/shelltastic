@@ -1,5 +1,6 @@
 require "shelltastic/version"
 require "shelltastic/command_io"
+require 'open4'
 
 module ShellTastic
   module Command

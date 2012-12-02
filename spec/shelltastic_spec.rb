@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-describe ShellTastic::Command do
+describe ShellTastic do
   it "should run a shell command" do
-    result = ShellTastic::Command("ls -l").run
+    result = ShellTastic::Command.run("ls -l")
     p result
   end
 
