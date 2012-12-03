@@ -1,11 +1,14 @@
 require "shelltastic/version"
 require "shelltastic/command_io"
+require "shelltastic/timer"
+require "shelltastic/exceptions"
 require 'open4'
 
 module ShellTastic
-  module Command
+  class Command
+    @verbose ||= true
     class << self
-      def run command
+      def run(command, *args)
         ShellTastic::IO.popen(command)
       end
     end
