@@ -3,7 +3,6 @@ require 'spec_helper'
 describe ShellTastic do
   it "should run a shell command" do
     result = ShellTastic::Command.run("ls -l")
-    p result.keys
     result.fetch(:exitstatus).should eq(0)
   end
 
@@ -17,7 +16,6 @@ describe ShellTastic do
     expect {
       ShellTastic::Command.run("")
     }.to raise_error("Command is emtpy or nil")
-
   end
 
 end
