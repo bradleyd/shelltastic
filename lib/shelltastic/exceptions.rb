@@ -1,3 +1,4 @@
 module ShellTastic
-    class CommandException < RuntimeError; end
+  # @raise: Describes an Exception that a method may throw
+  class CommandException < RuntimeError; end
 end
