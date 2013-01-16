@@ -20,8 +20,8 @@ module ShellTastic
       # @param [Hash, nil] opts the opts passed in
       # @option [Boolean] milliseconds the time in milliseconds
       # @return [Time] Time elapsed between #start and #stop
-      def total_time(:milliseconds = false)
-        if opts[:milliseconds]
+      def total_time(milliseconds = false)
+        if milliseconds
           (@stop - @start) * 1000.0
         else
           @stop - @start
