@@ -12,7 +12,8 @@ module ShellTastic
     @verbose ||= true
     class << self
       # encapsualtes the popen call 
-      # @param [String, ...] command the command that wants to be run
+      # @param [String] command the command that wants to be run
+      # @param [Array] args an array of other arguments
       # @return [Hash] from #::IO::popen
       def run(command, *args)
         ShellTastic::IO.popen(command)
