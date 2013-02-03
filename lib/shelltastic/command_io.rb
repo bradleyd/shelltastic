@@ -17,7 +17,7 @@ module ShellTastic
         command_results = {}
         begin
           start = timer.start
-          return_code = Open4::spawn(command) do |pid, stdin, stdout, stderr|
+          return_code = Open4::popen4(command) do |pid, stdin, stdout, stderr|
             command_results.store(:output,stdout.read.strip)
             command_results.store(:pid,pid)
             command_results.store(:error,stderr.read.strip)
@@ -29,7 +29,7 @@ module ShellTastic
                                  total_time: total_time, 
                                  exitstatus: return_code.exitstatus)
         rescue Errno::ENOENT => e
-          raise ShellTastic::CommandException.new("Shell command #{command} failed with status #{$?}")
+          raise ShellTastic::CommandException.new("Shell command #{command} failed with status #{$?} and ERROR: #{e.message}")
         end
         command_results
       end

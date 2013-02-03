@@ -16,7 +16,7 @@ module ShellTastic
       # @param [Object] timer timer object, @see ShellTastic::Timer
       # @param [Array] args an array of other arguments
       # @return [Hash] from #::IO::popen
-      def run(command, *args)
+      def run(command)
         ShellTastic::IO.popen(command, ShellTastic::Timer)
       end
     end
