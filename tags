@@ -1,0 +1,23 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Command	lib/shelltastic.rb	/^  class Command$/;"	c	class:ShellTastic
+CommandException	lib/shelltastic/exceptions.rb	/^  class CommandException < RuntimeError; end$/;"	c	class:ShellTastic
+IO	lib/shelltastic/command_io.rb	/^  module IO$/;"	m	class:ShellTastic
+ShellTastic	lib/shelltastic.rb	/^module ShellTastic$/;"	m
+ShellTastic	lib/shelltastic/command_io.rb	/^module ShellTastic$/;"	m
+ShellTastic	lib/shelltastic/exceptions.rb	/^module ShellTastic$/;"	m
+ShellTastic	lib/shelltastic/timer.rb	/^module ShellTastic$/;"	m
+ShellTastic	lib/shelltastic/utils.rb	/^module ShellTastic$/;"	m
+Shelltastic	lib/shelltastic/version.rb	/^module Shelltastic$/;"	m
+Timer	lib/shelltastic/timer.rb	/^  module Timer$/;"	m	class:ShellTastic
+Utils	lib/shelltastic/utils.rb	/^  module Utils$/;"	m	class:ShellTastic
+popen	lib/shelltastic/command_io.rb	/^      def popen(command, timer=ShellTastic::Timer)$/;"	f	class:ShellTastic.IO
+run	lib/shelltastic.rb	/^      def run(command, *args)$/;"	f	class:ShellTastic.Command
+start	lib/shelltastic/timer.rb	/^      def start$/;"	f	class:ShellTastic.Timer
+stop	lib/shelltastic/timer.rb	/^      def stop$/;"	f	class:ShellTastic.Timer
+string_nil_or_blank?	lib/shelltastic/utils.rb	/^    def string_nil_or_blank? str$/;"	f	class:ShellTastic.Utils
+total_time	lib/shelltastic/timer.rb	/^      def total_time(milliseconds = false)$/;"	f	class:ShellTastic.Timer
