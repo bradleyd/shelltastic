@@ -25,7 +25,9 @@ Will return a Hash of meta-data pertaining to the above command.
 
 For example, the above command's return would look something like this:
 
-`{:output=>"Sun Feb  3 17:41:45 EST 2013", :pid=>17507, :error=>"", :start=>2013-02-03 17:41:45 -0500, :stop=>2013-02-03 17:41:45 -0500, :total_time=>0.004405272, :exitstatus=>0}`
+```ruby
+{:output=>"Sun Feb  3 17:41:45 EST 2013", :pid=>17507, :error=>"", :start=>2013-02-03 17:41:45 -0500, :stop=>2013-02-03 17:41:45 -0500, :total_time=>0.004405272, :exitstatus=>0}
+```
 
 ## Contributing
 
