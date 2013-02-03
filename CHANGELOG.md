@@ -1,3 +1,6 @@
+## Changelog
+
+* Change Open4 back to popen4.  Update READE.  Bump minor version 0.2.3
 * Bump version 0.2.2. Move timer object out of IO#popen; inject object insteadMove #string_nil_or_blank? to utils module.  Now extend this module in IO.
 * Bump version to 0.1.2 for bug fix
 * Fix syntax error in timer
