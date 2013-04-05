@@ -25,7 +25,9 @@ module ShellTastic
           end
           stop = timer.stop
           total_time = timer.total_time
-          command_results.merge!(start: start, stop: stop, 
+          command_results.merge!(start: start, 
+                                 stop: stop,
+                                 command: command,
                                  total_time: total_time, 
                                  exitstatus: return_code.exitstatus)
         rescue Errno::ENOENT => e

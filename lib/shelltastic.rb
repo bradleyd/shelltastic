@@ -12,12 +12,23 @@ module ShellTastic
     @verbose ||= true
     class << self
       # encapsualtes the popen call 
-      # @param [String] command the command that wants to be run
-      # @param [Object] timer timer object, @see ShellTastic::Timer
-      # @param [Array] args an array of other arguments
+      # @param command [String] the command that wants to be run
+      # @param  timer [Object] timer object, @see ShellTastic::Timer
       # @return [Hash] from #::IO::popen
+      # @example
+      # ShellTastic::Command.run "whoami"
       def run(command)
         ShellTastic::IO.popen(command, ShellTastic::Timer)
+      end
+
+      # run multiple system commands
+      #
+      # @param args [Array] args multiple system commands
+      # @return [Array] array of hashes from the results of IO.popen
+      # @example
+      # ShellTastic::Command.run_each "whoami", "date", "uname"
+      def run_each(*args)
+        args.map { |cmd| ShellTastic::IO.popen(cmd, ShellTastic::Timer) }
       end
     end
   end
