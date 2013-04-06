@@ -1,5 +1,5 @@
 # Shelltastic
-Shelltastic is a *nix shell wrapper for ruby...nothing else.
+Shelltastic is simple *nix shell wrapper for ruby.  You can pass a single command or multiple commands to run.
 
 ## Installation
 
@@ -21,18 +21,31 @@ Or install it yourself as:
 ShellTastic::Command.run("date")
 ```
 
-Will return a Hash of meta-data pertaining to the above command.
+The above will return an Array of hash meta-data.
 
 ```ruby 
-{ :output, :pid, :error, :start, :stop, :total_time, :exitstatus }
+[{ :output, :pid, :error, :start, :stop, :total_time, :exitstatus }]
 ```
 
 For example, the above command's return would look something like this:
 
 ```ruby
-{:output=>"Sun Feb  3 17:41:45 EST 2013", :pid=>17507, :error=>"", :start=>2013-02-03 17:41:45 -0500, :stop=>2013-02-03 17:41:45 -0500, :total_time=>0.004405272, :exitstatus=>0}
+[{:output=>"Sun Feb  3 17:41:45 EST 2013", :pid=>17507, :error=>"", :start=>2013-02-03 17:41:45 -0500, :stop=>2013-02-03 17:41:45 -0500, :total_time=>0.004405272, :exitstatus=>0}]
 ```
 
+You can also pass multiple commands separated by commas or pass an array.
+
+```ruby
+ShellTastic::Command.run("date", "whoami")
+```
+
+```ruby
+ShellTastic::Command.run(["date", "whoami"])
+```
+
+```ruby
+[{:output=>"Sat Apr  6 15:26:05 EDT 2013", :pid=>92558, :error=>"", :start=>2013-04-06 15:26:05 -0400, :stop=>2013-04-06 15:26:05 -0400, :command=>"date", :total_time=>0.010004, :exitstatus=>0}, {:output=>"bradleydsmith", :pid=>92559, :error=>"", :start=>2013-04-06 15:26:05 -0400, :stop=>2013-04-06 15:26:05 -0400, :command=>"whoami", :total_time=>0.008262, :exitstatus=>0}]
+```
 ## Contributing
 
 1. Fork it
