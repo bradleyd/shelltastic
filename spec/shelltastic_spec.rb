@@ -3,8 +3,19 @@ require 'spec_helper'
 describe ShellTastic do
   it "should run a shell command" do
     result = ShellTastic::Command.run("ls -l")
-    result.fetch(:exitstatus).should eq(0)
+    result.first.fetch(:exitstatus).should eq(0)
   end
+
+  it "should run multiple commands" do
+    result = ShellTastic::Command.run("ls -l", "date")
+    result.size.should eq(2) 
+  end
+
+  it "should run take an array of commands to run" do
+    result = ShellTastic::Command.run(["ls -l", "date"])
+    result.size.should eq(2) 
+  end
+
 
   it "should raise a command exception" do
     expect {
