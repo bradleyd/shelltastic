@@ -8,11 +8,12 @@ module ShellTastic
     class << self
       # A wrapper around popen4
       #
-      # @see #Command.run
-      # @param command [String] command(s) to run
-      # @return [Array, Hash] command_results the command results from shell
-      # [{ :output, :pid, :error, :start, :stop, :total_time, :exitstatus }]
-      def popen(command, timer=ShellTastic::Timer)
+      # @see #run
+      # @param command [String] command(s) to execute
+      # @param command [Array] command(s) to execute
+      # @param command [Time] time object for run time
+      # @return [Array] array of hash meta-data for the command(s) executed
+      def popen(command, timer)
         string_nil_or_blank?(command)
         command_results = {}
         begin

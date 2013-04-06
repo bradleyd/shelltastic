@@ -26,7 +26,7 @@ describe ShellTastic do
   it "should alert if command is empty or nil" do
     expect {
       ShellTastic::Command.run("")
-    }.to raise_error("Command is emtpy or nil")
+    }.to raise_error("The command is emtpy or nil")
   end
 
 end

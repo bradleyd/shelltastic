@@ -1,18 +1,21 @@
 module ShellTastic
-  module Timer
-    class << self
+  class Timer
+      def initialize
+
+      end
+
       # Creates a start time object
       # @param [nil] 
       # @return [Time] Time now object
       def start
-        @start = Time.now
+        @start_time = Time.now
       end
       
       # Creates a stop time object
       # @param [nil] 
       # @return [Time] Time now object
       def stop
-        @stop = Time.now
+        @stop_time = Time.now
       end
 
       # Calculates the total time elapsed
@@ -22,11 +25,10 @@ module ShellTastic
       # @return [Time] Time elapsed between #start and #stop
       def total_time(milliseconds = false)
         if milliseconds
-          (@stop - @start) * 1000.0
+          (@stop_time - @start_time) * 1000.0
         else
-          @stop - @start
+          @stop_time - @start_time
         end
       end
     end
   end
-end

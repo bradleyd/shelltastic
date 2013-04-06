@@ -5,11 +5,11 @@ require 'shelltastic/version'
 
 Gem::Specification.new do |gem|
   gem.name          = "shelltastic"
-  gem.version       = Shelltastic::VERSION
-  gem.authors       = ["Brad Smith"]
+  gem.version       = ShellTastic::VERSION
+  gem.authors       = ["Bradley Smith"]
   gem.email         = ["bradleydsmith@gmail.com"]
-  gem.description   = %q{Shelltastic is another *nix shell wrapper}
-  gem.summary       = %q{*nix shell wrapper}
+  gem.description   = %q{Shelltastic is a simple *nix shell wrapper}
+  gem.summary       = %q{Shelltastic is a simple *nix shell wrapper}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($/)
