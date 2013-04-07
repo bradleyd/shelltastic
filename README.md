@@ -24,7 +24,7 @@ ShellTastic::Command.run("date")
 The above will return an Array of hash meta-data.
 
 ```ruby 
-[{ :output, :pid, :error, :start, :stop, :total_time, :exitstatus }]
+[{ :output, :pid, :error, :start, :stop, :total_time, :exitstatus, :command }]
 ```
 
 For example, the above command's return would look something like this:
