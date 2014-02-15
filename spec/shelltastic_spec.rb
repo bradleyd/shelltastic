@@ -29,4 +29,15 @@ describe ShellTastic do
     }.to raise_error("The command is emtpy or nil")
   end
 
+  it "should return `false` for error if there is not any errors" do
+    result = ShellTastic::Command.run("date")
+    result[:error].should eq(false)
+  end
+
+  it "should return error" do
+    result = ShellTastic::Command.run("du -sh /tmp/foos")
+    result[:error].should_not eq(false)
+  end
+
+
 end

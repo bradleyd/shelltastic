@@ -1,17 +1,28 @@
 module ShellTastic
 
   module Utils
-    # A dirty string check for nil empty or just whitespace
-    # @param str [String] a string that needs to be checked
-    # @return [Boolean, nil] true if str is empty, nil, or just whitespace
+    # @param [String] str the string the needs to be checked
+    # @return [Boolean] 
     def string_nil_or_blank? str
+      str !~ /[^[:space:]]/ || str.nil? || str.empty?
+    end
+
+    # note the ! it will raise an exception
+    # @param [String] str the string the needs to be checked
+    # @return [ShellTastic::CommandException] 
+    def string_nil_or_blank! str
       # raise if command is empty or nil
       if str !~ /[^[:space:]]/ || str.nil? || str.empty?
-        raise ShellTastic::CommandException.new("The command is emtpy or nil")
+        raise ShellTastic::CommandException.new("Command is emtpy or nil")
       end
     end
 
+    # like the other methods but set exception flag 
+    def empty_nil_blank(str, raize=false)
+      result = (str !~ /[^[:space:]]/ || str.nil? || str.empty?)
+      raise ShellTastic::CommandException.new("Command is emtpy or nil") if result and raize
+      result
+    end
 
   end
-
 end
