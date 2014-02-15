@@ -1,5 +1,6 @@
 require_relative "shelltastic/version"
 require_relative "shelltastic/utils"
+require_relative "shelltastic/output_formatter"
 require_relative "shelltastic/command_io"
 require_relative "shelltastic/timer"
 require_relative "shelltastic/exceptions"
@@ -17,7 +18,7 @@ module ShellTastic
       #   ShellTastic::Command.run "whoami"
       #   ShellTastic::Command.run "whoami", "date"
       def run(*command)
-        command.flatten.map { |cmd| ShellTastic::IO.popen(cmd, ShellTastic::Timer.new) }
+        command.flatten.map { |cmd| ShellTastic::IO.popen(cmd, ShellTastic::Timer.new, ShellTastic::OutputFormatter.new) }
       end
     end
   end

@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe ShellTastic do
   it "should run a shell command" do
-    result = ShellTastic::Command.run("ls -l")
-    result.first.fetch(:exitstatus).should eq(0)
+    result = ShellTastic::Command.run("ls -l").first
+    result.fetch(:exitstatus).should eq(0)
   end
 
   it "should run multiple commands" do
@@ -26,16 +26,16 @@ describe ShellTastic do
   it "should alert if command is empty or nil" do
     expect {
       ShellTastic::Command.run("")
-    }.to raise_error("The command is emtpy or nil")
+    }.to raise_error(ShellTastic::CommandException)
   end
 
   it "should return `false` for error if there is not any errors" do
-    result = ShellTastic::Command.run("date")
+    result = ShellTastic::Command.run("date").first
     result[:error].should eq(false)
   end
 
   it "should return error" do
-    result = ShellTastic::Command.run("du -sh /tmp/foos")
+    result = ShellTastic::Command.run("du -sh /tmp/foos").first
     result[:error].should_not eq(false)
   end
 
