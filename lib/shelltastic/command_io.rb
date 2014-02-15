@@ -24,13 +24,14 @@ module ShellTastic
           stdin.close
           _, status = Process::waitpid2 pid
           error = stderr.read.strip
-          formatter.build({command: command,
-                            output: stdout.read.strip,
-                            pid: pid,
-                            error: string_nil_or_blank?(error) ? false : error,
-                            stop: timer.stop,
-                            exitstatus: status.exitstatus,
-                            total_time: timer.total_time})
+          formatter.build(command: command,
+                          output: stdout.read.strip,
+                          pid: pid,
+                          error: string_nil_or_blank?(error) ? false : error,
+                          stop: timer.stop,
+                          exitstatus: status.exitstatus,
+                          total_time: timer.total_time)
+
         rescue Errno::ENOENT => e
           raise ShellTastic::CommandException.new("Shell command #{command} failed with status #{$?} and ERROR: #{e.message}")
         end
