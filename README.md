@@ -46,6 +46,8 @@ ShellTastic::Command.run(["date", "whoami"])
 ```ruby
 [{:output=>"Sat Apr  6 15:26:05 EDT 2013", :pid=>92558, :error=>false, :start=>2013-04-06 15:26:05 -0400, :stop=>2013-04-06 15:26:05 -0400, :command=>"date", :total_time=>0.010004, :exitstatus=>0}, {:output=>"bradleydsmith", :pid=>92559, :error=>false, :start=>2013-04-06 15:26:05 -0400, :stop=>2013-04-06 15:26:05 -0400, :command=>"whoami", :total_time=>0.008262, :exitstatus=>0}]
 ```
+
+
 ## Contributing
 
 1. Fork it
