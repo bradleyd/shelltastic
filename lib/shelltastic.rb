@@ -20,6 +20,10 @@ module ShellTastic
       def run(*command)
         command.flatten.map { |cmd| ShellTastic::IO.popen(cmd, ShellTastic::Timer.new, ShellTastic::OutputFormatter.new) }
       end
+
+      def start(*command)
+        command.flatten.map { |cmd| ShellTastic::IO.fire_and_forget(cmd, ShellTastic::Timer.new, ShellTastic::OutputFormatter.new) }
+      end
     end
   end
 end

@@ -39,5 +39,27 @@ describe ShellTastic do
     result[:error].should_not eq(false)
   end
 
+  # fire and forget
+  it "should fire a command in the background and have a pid" do
+    result = ShellTastic::Command.start("ls -al /").first
+    result[:pid].should_not be_nil
+  end
+
+  it "should fire a command in the background and have a command" do
+    result = ShellTastic::Command.start("ls -al /").first
+    result[:command].should eq("ls -al /")
+  end
+
+  it "should fire a command in the background and have no ouput" do
+    result = ShellTastic::Command.start("ls -al /").first
+    result[:output].should be_nil
+  end
+
+  it "should fire a command in the background and not raise an error" do
+    expect {
+      ShellTastic::Command.start("foobar").first
+    }.to raise_error(ShellTastic::CommandException)
+  end
+
 
 end
