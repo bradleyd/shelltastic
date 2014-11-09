@@ -17,10 +17,17 @@ Or install it yourself as:
 
 ## Usage
 
+__Version >= 1.0 require ruby `2.1+`__
+
+If you need to use older versions of ruby please use gem version <= `1`
+
+##### Version 1.x
+Is a complete re-write and is not backwards compatible.  Use `0.x` instead
+
 ### Run 
 
  ```ruby
-ShellTastic::Command.run("date")
+ShellTastic.run("date")
 ```
 
 The above will return an Array of hash meta-data.
@@ -49,11 +56,11 @@ For example, the above command's return would look something like this:
 You can also pass multiple commands separated by commas or pass an array.
 
 ```ruby
-ShellTastic::Command.run("date", "whoami")
+ShellTastic.run("date", "whoami")
 ```
 
 ```ruby
-ShellTastic::Command.run(["date", "whoami"])
+ShellTastic.run(["date", "whoami"])
 ```
 
 ```ruby
@@ -82,10 +89,14 @@ ShellTastic::Command.run(["date", "whoami"])
 ]
 ```
 
-### Start
-Start will run a command in the background and return the pid immediately.
+### Non-Blocking execution
 
-It takes the same command arguments as `#run`
+You can run a command in the background and return the pid immediately.
+
+`#run` takes an optional hash that can be passed in
+
+* Command blocks by default
+
 
 The parent process (you) will not wait for the child to finish or return any information.
 
@@ -96,12 +107,12 @@ __BEWARE__ of long running commands that could fail.  ShellTastic detaches itsel
 
 
 ```ruby
-ShellTastic::Command.start("sleep 10; date")
+ShellTastic.run("sleep 10; date", block: false)
 ```
 or
 
 ```ruby
-ShellTastic::Command.start(["sleep 10", "date"])
+ShellTastic.run(["sleep 10", "date"], block: false)
 ```
 
 The above will return an Array of hash meta-data.

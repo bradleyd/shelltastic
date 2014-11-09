@@ -2,25 +2,39 @@ require 'spec_helper'
 
 describe ShellTastic::OutputFormatter do
   before :each do
-    @result = ShellTastic::OutputFormatter.new
-    @result.build(output: "Fri Feb 14 20:54:59 MST 2014",
-                  pid: "10000000",
-                  error: "No such file or directory")
-  end
-  it "should return a hash" do
-    @result.inspect.should be_kind_of(Hash)
+    @command = ShellTastic::Command.new("echo hi")
+    @command.run
+    @result = ShellTastic::OutputFormatter.new(@command)
   end
 
-  it "should allow to add key value pairs" do
-    @result.command = "date"
-    @result.inspect[:command].should eq("date")
+  it "should return a hash" do
+    @result.to_h.should be_kind_of(Hash)
   end
 
   it "should have total time" do
-    timer = ShellTastic::Timer.new
-    @result.start = timer.start
-    @result.stop  = timer.stop
-    @result.total_time = timer.total_time
-    @result.total_time.should_not be_nil
+    @result.to_h.should have_key(:total_time)
   end
+
+  it "should have pid" do
+    @result.to_h.should have_key(:pid)
+  end
+
+  it "should have output" do
+    @result.to_h.should have_key(:output)
+  end
+
+  it "should have command" do
+    @result.to_h.should have_key(:command)
+  end
+
+  it "should have error" do
+    @result.to_h.should have_key(:error)
+  end
+
+  it "should have exitstatus" do
+    @result.to_h.should have_key(:exitstatus)
+  end
+
+
 end
+

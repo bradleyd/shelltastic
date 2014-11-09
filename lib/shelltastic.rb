@@ -1,15 +1,12 @@
 require_relative "shelltastic/version"
-require_relative "shelltastic/utils"
-require_relative "shelltastic/output_formatter"
-require_relative "shelltastic/command_io"
-require_relative "shelltastic/timer"
 require_relative "shelltastic/exceptions"
+require_relative "shelltastic/command_io"
 
 # ShellTastic namespace
 module ShellTastic
-  class Command
     class << self
       # run is the entry point to api 
+      # @param opts [Hash] opts to block or not block
       # @param command [String] command or multiple commands to be executed
       # @param command [Array] multiple commands to be executed
       # @param timer [Object] timer object, @see ShellTastic::Timer
@@ -17,13 +14,9 @@ module ShellTastic
       # @example
       #   ShellTastic::Command.run "whoami"
       #   ShellTastic::Command.run "whoami", "date"
-      def run(*command)
-        command.flatten.map { |cmd| ShellTastic::IO.popen(cmd, ShellTastic::Timer.new, ShellTastic::OutputFormatter.new) }
-      end
-
-      def start(*command)
-        command.flatten.map { |cmd| ShellTastic::IO.fire_and_forget(cmd, ShellTastic::Timer.new, ShellTastic::OutputFormatter.new) }
+      #   ShellTastic::Command.run(block: false, "whoami", "date")
+      def run(*command, **opts)
+        command.flatten.map { |cmd| ShellTastic::IO.popen(cmd, opts) }
       end
     end
-  end
 end

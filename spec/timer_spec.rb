@@ -2,13 +2,15 @@ require 'spec_helper'
 
 describe ShellTastic::Timer do
   it "should report start time" do
-    start = ShellTastic::Timer.new.start
-    start.class.should eq(Time)
+    timer = ShellTastic::Timer.new
+    timer.start
+    timer.start_time.class.should eq(Time)
   end
 
   it "should report stop time" do
-    stop = ShellTastic::Timer.new.stop
-    stop.class.should eq(Time)
+    timer = ShellTastic::Timer.new
+    timer.stop
+    timer.stop_time.class.should eq(Time)
   end
 
   it "should report total time" do

@@ -1,9 +1,6 @@
 module ShellTastic
   class Timer
-      def initialize
-
-      end
-
+      attr_reader :start_time, :stop_time
       # Creates a start time object
       # @param [nil] 
       # @return [Time] Time now object

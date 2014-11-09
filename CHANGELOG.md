@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.0.0
+ __BREAKING CHANGES__
+
+* Rename `ShellTastic::Command.run` to `ShellTastic.run`
+* Be able to run command in subprocess and detach from it
+* Refactored OutputFormatter
+* Add Command class to keep state of command
+* Cleaned up tests
+
+## 0.5.0
+* add `start` command to run command in background a detached child
+* trivial cleanup
+* No breaking changes
+
 ## 0.4.0
 * `:error` returns false now if there is not an error--instead of empty string
 

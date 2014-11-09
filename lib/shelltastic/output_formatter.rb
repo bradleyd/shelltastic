@@ -1,24 +1,24 @@
+require_relative 'utils'
+
 module ShellTastic
   class OutputFormatter
-    attr_accessor :output, :pid, :error, 
-      :command, :start, :stop,
-      :total_time, :exitstatus
+    include ShellTastic::Utils
 
-    def build(args)
-      args.each_pair do |key, value|
-        send("#{key}=",value)
-      end
+    def initialize(command_object)
+      @command = command_object
     end
 
-    def inspect
-      hsh = {}
-      meths =  self.class.instance_methods(false)  - [:build, :inspect]
-      meths.each do |meth|
-        if meth !~ /=/
-          hsh.store(meth.to_sym,self.method(meth).call)
-        end
-      end
-      hsh
+    def to_h
+      { 
+        output: @command.output,
+        pid: @command.pid,
+        error: string_nil_or_blank?(@command.stderr) ? false : @command.stderr,
+        command: @command.command,
+        start: @command.start_time,
+        stop: @command.stop_time,
+        total_time: @command.total_time,
+        exitstatus: @command.exitstatus
+      }
     end
   end
 end
