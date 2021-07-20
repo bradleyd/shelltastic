@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = ShellTastic::VERSION
   gem.authors       = ["Bradley Smith"]
   gem.email         = ["bradleydsmith@gmail.com"]
-  gem.description   = %q{Shelltastic is a simple *nix shell wrapper}
-  gem.summary       = %q{Shelltastic is a simple *nix shell wrapper}
-  gem.homepage      = ""
+  gem.description   = %q{Shelltastic is a simple *nix shell wrapper that you can use in your own applications.}
+  gem.summary       = %q{Shelltastic is a simple *nix shell wrapper.}
+  gem.homepage      = "https://github.com/bradleyd/shelltastic"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

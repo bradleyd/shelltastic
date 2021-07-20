@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.5.0
+* Added `start` command to run commands in the background. Bump Version 0.5.0
+
 ## 0.4.0
 * `:error` returns false now if there is not an error--instead of empty string
 
