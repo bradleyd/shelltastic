@@ -1,5 +1,8 @@
 # Changelog
 
+## 1.0.0
+* house cleaning. updated some dependencies and bumped version to 1.0.0
+
 ## 0.5.0
 * Added `start` command to run commands in the background. Bump Version 0.5.0
 
