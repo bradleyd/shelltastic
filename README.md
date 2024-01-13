@@ -1,6 +1,9 @@
 # Shelltastic
 Shelltastic is simple *nix shell wrapper for ruby.  You can pass a single command or multiple commands to run.
 
+[![Gem Version](https://badge.fury.io/rb/shelltastic.svg)](https://badge.fury.io/rb/shelltastic)
+
+
 ## Installation
 
 Add this line to your application's Gemfile:
