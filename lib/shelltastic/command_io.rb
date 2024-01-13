@@ -70,7 +70,6 @@ module ShellTastic
           Process.detach(pid) if pid
         end
       end
-
     end
   end
 end

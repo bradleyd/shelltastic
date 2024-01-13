@@ -7,20 +7,20 @@ describe ShellTastic::OutputFormatter do
                   pid: "10000000",
                   error: "No such file or directory")
   end
-  it "should return a hash" do
-    @result.inspect.should be_kind_of(Hash)
+  it "returns a hash" do
+    expect(@result.inspect).to be_kind_of(Hash)
   end
 
-  it "should allow to add key value pairs" do
+  it "allows to add key value pairs" do
     @result.command = "date"
-    @result.inspect[:command].should eq("date")
+    expect(@result.inspect[:command]).to eq("date")
   end
 
-  it "should have total time" do
+  it "contains total time" do
     timer = ShellTastic::Timer.new
     @result.start = timer.start
     @result.stop  = timer.stop
     @result.total_time = timer.total_time
-    @result.total_time.should_not be_nil
+    expect(@result.total_time).to_not be_nil
   end
 end

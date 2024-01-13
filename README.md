@@ -91,7 +91,7 @@ The parent process (you) will not wait for the child to finish or return any inf
 
 This is useful if you want to run a command, but dont care about the output or exit status.
 
-__BEWARE__ of long running commands that could fail.  ShellTastic detaches itself from the child command.
+__BEWARE__ of long running commands that could fail. ShellTastic detaches itself from the child command.
 
 
 
